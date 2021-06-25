@@ -29,7 +29,7 @@ class ResConfigSettings(models.TransientModel):
         param_obj = self.env['ir.config_parameter']
         param_obj.sudo().set_param('aspl_delivery_sign.delivery_signature', self.delivery_signature)
 
-    delivery_signature = fields.Boolean("Require Signature")
+    delivery_signature = fields.Boolean("Signature Obligatoire")
 
 class StokcPicking(models.Model):
     _inherit = 'stock.picking'
@@ -39,7 +39,7 @@ class StokcPicking(models.Model):
         if self:
             config_sign = self.env['ir.config_parameter'].sudo().get_param('aspl_delivery_sign.delivery_signature')
             if config_sign and (not self.signature):
-                raise UserError(_('Signature is required to make validate this picking.'))
+                raise UserError(_('Signature obligatoire pour valider BL'))
         return result
 
     signature = fields.Binary("Signature", readonly=True)
