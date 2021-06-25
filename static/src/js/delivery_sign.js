@@ -63,7 +63,7 @@ odoo.define('aspl_delivery_sign.delivery_sign', function (require) {
 	            		if(result[0].state == "assigned" || result[0].state == "confirmed" || result[0].state == "waiting"){
 		            		$('#customerModal').modal('show');
 	            		}else{
-	            			self.do_notify(_t('Information'),_t("Picking "+ result[0].name +" is Done!, You can't add signature."));
+	            			self.do_notify(_t('Information'),_t("Livraison "+ result[0].name +" est faute!, Tu peux pas ajouter signature."));
 	            		}
 	            	}
 	            });
@@ -87,7 +87,7 @@ odoo.define('aspl_delivery_sign.delivery_sign', function (require) {
 		    blank.width = event.data.canvas.width;
 		    blank.height = event.data.canvas.height;
 		    if(blank.toDataURL() == event.data.canvas.toDataURL()){
-		    	event.data.self.do_warn(_t('Please add signature and try again.'));
+		    	event.data.self.do_warn(_t('SVP ajouter signature et réessayer.'));
 		    }else{
                 if(id){
                     rpc.query({
@@ -98,16 +98,16 @@ odoo.define('aspl_delivery_sign.delivery_sign', function (require) {
 		            	async: false
 		            }).then(function (result) {
 		            	if(result){
-		            		event.data.self.do_notify(_t('Information'),_t("Signature stored successfully."));
+		            		event.data.self.do_notify(_t('Information'),_t("Signature sauvegader."));
             				event.data.canvas.clear();
             				event.data.canvas.renderAll();
             				$('#customerModal').modal('hide');
             			}else{
-            				alert("Signature not save.");
+            				alert("Signature pas enregistrer.");
             			}
 		            });
                 }else{
-                    alert("Record id not found, Please refresh page and try again.");
+                    alert("Record id n'exsiste pas, svp actualiser la page et réessayer.");
                 }
 		    }
 		    // render form view
