@@ -63,7 +63,7 @@ odoo.define('aspl_delivery_sign.delivery_sign', function (require) {
 	            		if(result[0].state == "assigned" || result[0].state == "confirmed" || result[0].state == "waiting"){
 		            		$('#customerModal').modal('show');
 	            		}else{
-	            			self.do_notify(_t('Information'),_t("Livraison "+ result[0].name +" est faute!, Tu peux pas ajouter signature."));
+	            			self.do_notify(_t('Information'),_t("Livraison "+ result[0].name +" est faite!, Tu peux pas ajouter signature."));
 	            		}
 	            	}
 	            });
